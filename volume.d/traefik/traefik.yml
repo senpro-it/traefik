@@ -1,0 +1,25 @@
+experimental:
+  http3: true
+
+providers:
+  file:
+    directory: "/etc/traefik/conf.d"
+    watch: true
+
+entryPoints:
+  http2-tcp:
+    address: ":80/tcp"
+    http:
+      redirections:
+        entryPoint:
+          to: "https2-tcp"
+          scheme: "https"
+  https2-tcp:
+    address: ":443/tcp"
+
+certificatesResolvers:
+  letsEncrypt:
+    acme:
+      storage: "/etc/traefik/cert.d/acme.json"
+      httpChallenge:
+        entryPoint: "http2-tcp"
