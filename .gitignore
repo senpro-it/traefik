@@ -1,3 +1,3 @@
-compose.d/traefik/cert.d/*
-compose.d/traefik/conf.d/*
-!compose.d/traefik/conf.d/main.yml
+volume.d/traefik/cert.d/*
+volume.d/traefik/conf.d/*
+!volume.d/traefik/conf.d/main.yml
